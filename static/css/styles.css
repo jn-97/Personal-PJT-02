@@ -1,0 +1,23 @@
+body {
+  padding-top: 56px;
+  height: 1000px;
+}
+
+.navbar {
+  border-bottom: 1px solid rgb(233, 233, 233);
+}
+
+.container-fluid {
+  margin-left: 20rem;
+  margin-right: 20rem;
+}
+
+.navbar-brand {
+  line-height: 1;
+  margin: 0;
+}
+
+.nav_image {
+  height: 24px;
+}
+
