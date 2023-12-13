@@ -108,19 +108,20 @@ SOCIALACCOUNT_PROVIDERS = {
 
     'naver': {
         'APP': {
-            'client_id': '123',
-            'secret': '456',
+            'client_id': '0rdkN64yiqP4uCfDyhuR',
+            'secret': '3otPYO4h4f',
             'key': ''
         }
     },
 
     'kakao': {
         'APP': {
-            'client_id': '123',
-            'secret': '456',
+            'client_id': 'afd94d9f8376050d4a116f77472f8bec',
+            'secret': 'none',
             'key': ''
         }
-    }
+    },
+
 }
 
 WSGI_APPLICATION = 'pjt.wsgi.application'
