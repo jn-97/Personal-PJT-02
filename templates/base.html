@@ -19,17 +19,23 @@
 </head>
 <body>
 
-  <!-- navbar -->
-  <nav class="navbar navbar-expand-lg fixed-top">
-    <div class="container-fluid">
-      <a class="navbar-brand" href="#">
-        <img class="nav_image" src="{% static 'images/위로의 집.png' %}" alt="">
-      </a>
-      <span class="navbar-text">
-        Navbar text with an inline element
-      </span>
+  <header>
+    <div class="navDiv">      
+      <!-- navbar -->
+      <nav class="navbar navbar-expand-lg">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="{% url 'community:community' %}" style="line-height: 0.9;"><img src="{% static 'images/위로의 집.png' %}" alt="" class="nav_logo"></a>
+          <button type="button" class="btn nav_btn">크리에이터</button>
+        </div>
+      </nav>
     </div>
-  </nav>
+  </header>
+  
+  <div class="bodyDiv">      
+    <a href="{% provider_login_url 'google' %}">Google 로그인</a>
+    <a href="{% provider_login_url 'naver' %}">Naver 로그인</a>
+    <a href="{% provider_login_url 'kakao' %}">Kakao 로그인</a>        
+  </div>
 
   {% block content %}{% endblock content %}
 </body>
