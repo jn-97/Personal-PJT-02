@@ -1,0 +1,29 @@
+.bodyContent {
+    max-width: 1080px;
+    margin: 40px auto 0px;
+}
+
+.loginBox {
+    border: 1px solid #dddddd;
+    text-align: center;
+    padding: 10px;
+    border-radius: 4px;
+}
+
+.loginImage {
+    width: 54px;
+    height: 54px;
+    margin: 20px 0px 20px 0px;
+}
+
+.loginBtn {
+    width: 90%;
+    color: white;
+    background-color: rgb(39 185 185);
+    margin-bottom: 5px;
+}
+
+.loginBtn:hover {
+    color: white;
+    background-color: rgb(35, 163, 163);
+}
