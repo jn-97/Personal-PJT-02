@@ -51,7 +51,6 @@ INSTALLED_APPS = [
     'allauth.account',
     'allauth.socialaccount',
     'allauth.socialaccount.providers.google',
-    'allauth.socialaccount.providers.kakao',
     'allauth.socialaccount.providers.naver',
 ]
 
@@ -113,15 +112,6 @@ SOCIALACCOUNT_PROVIDERS = {
             'key': ''
         }
     },
-
-    'kakao': {
-        'APP': {
-            'client_id': 'afd94d9f8376050d4a116f77472f8bec',
-            'secret': 'none',
-            'key': ''
-        }
-    },
-
 }
 
 WSGI_APPLICATION = 'pjt.wsgi.application'
