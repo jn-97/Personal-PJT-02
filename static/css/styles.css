@@ -45,3 +45,105 @@ header {
     padding: 0px;
   }
 }
+
+.bodyContent {
+  display: flex;
+  justify-content: space-between;
+  max-width: 1080px;
+  margin: 40px auto 0px;
+}
+
+.sideMenu {
+  width: 220px;
+  margin-right: 2rem;
+}
+
+/* 로그인 안된 경우 */
+.loginBox {
+  border: 1px solid #dddddd;
+  text-align: center;
+  padding: 10px;
+  border-radius: 4px;
+}
+
+.loginImage {
+  width: 54px;
+  height: 54px;
+  margin: 20px 0px 20px 0px;
+}
+
+.loginBtn {
+  width: 90%;
+  color: white;
+  background-color: rgb(39 185 185);
+  margin-bottom: 5px;
+}
+
+.loginBtn:hover {
+  color: white;
+  background-color: rgb(35, 163, 163);
+}
+
+/* 로그인 된 경우 */
+.userBox {
+  border: 1px solid #dddddd;
+  text-align: center;
+  border-radius: 4px;
+  height: 210px;
+}
+
+.id_Section {
+  display: flex;
+  justify-content: space-between;
+  padding: 15px 10px 10px 15px;
+  border-bottom: 1px solid #dddddd;
+}
+
+.menuList_a {
+  padding: 0px;
+  text-decoration-line: none;
+  color: #444444;
+}
+
+.menuList_a:hover {
+  background-color: #efefef;
+}
+
+.menuList {
+  border-bottom: 1px solid #dddddd;
+  padding: 8px;
+}
+
+.menuList_count {
+  color: rgb(35, 163, 163);
+}
+
+.createBtn {
+  width: 90%;
+  color: white;
+  background-color: rgb(39 185 185);
+  margin-top: 12px;
+}
+
+.createBtn:hover {
+  color: white;
+  background-color: rgb(35, 163, 163);
+}
+
+.userName {
+  line-height: 2.2;
+  font-size: 18px;
+}
+
+.logoutBtn {
+  background-color: #F5F5F5;
+}
+
+.logoutBtn:hover {
+  background-color: rgb(39 185 185);
+  color: white;
+}
+
+.mainMenu {
+  width: 870px;
+}
