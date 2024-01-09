@@ -37,6 +37,7 @@ ALLOWED_HOSTS = []
 # Application definition
 
 INSTALLED_APPS = [
+    'accounts',
     'community',
     'django.contrib.admin',
     'django.contrib.auth',
@@ -55,6 +56,13 @@ INSTALLED_APPS = [
 ]
 
 SITE_ID = 1
+
+# 로그인 후 "로그인을 확인하는 메세지" 뜨지 않게 설정
+SOCIALACCOUNT_LOGIN_ON_GET = True
+ACCOUNT_LOGOUT_ON_GET = True
+
+# 로그인 후 연결될 URL
+LOGIN_REDIRECT_URL = 'http://127.0.0.1:8000'
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -173,3 +181,5 @@ STATICFILES_DIRS = [
 # https://docs.djangoproject.com/en/3.2/ref/settings/#default-auto-field
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+AUTH_USER_MODEL = "accounts.User"
