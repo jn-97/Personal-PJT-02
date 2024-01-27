@@ -1,10 +1,14 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth.decorators import login_required
 from .forms import PostForm
+from .models import Post
 
 # Create your views here.
 def community(request):
-  return render(request, 'community/community.html')
+
+  posts = Post.objects.all()
+
+  return render(request, 'community/community.html', {'posts': posts})
 
 @login_required
 def community_create(request):
