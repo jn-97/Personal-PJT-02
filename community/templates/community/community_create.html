@@ -10,30 +10,36 @@
     <form method="post" action="">
       {% csrf_token %}
       
-      <!-- 게시판 -->
-      <div class="row mb-3">
-        <span class="col-1" style="font-size: 17px; line-height: 2.2;">게시판</span>
-        <span class="col-6">
-          <select class="form-select" aria-label="Small select example" name="category" id="id_category">
-            <option value="Genaral">자유게시판</option>
-            <option value="QnA">질문게시판</option>
-          </select>
-        </span>
+      <div>
+        <!-- 게시판 -->
+        <div class="row mb-3">
+          <span class="col-1" style="font-size: 17px; line-height: 2.2;">게시판</span>
+          <span class="col-6">
+            <select class="form-select" aria-label="Small select example" name="category" id="id_category">
+              <option value="Genaral">자유게시판</option>
+              <option value="QnA">질문게시판</option>
+            </select>
+          </span>
+        </div>
+  
+        <!-- 제목 -->
+        <div class="row  mb-3">
+          <span class="col-1" style="font-size: 17px; line-height: 2.2;">제목</span>
+          <input name="title" type="text" class="form-control" style="width: 80%; margin-left: 11px;" placeholder="제목을 입력해주세요">
+        </div>
+  
+        <!-- 내용 -->
+        <div class="row">
+          <span class="col-12" style="font-size: 17px; line-height: 2.2;">내용</span>
+          <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="contents"></textarea>
+        </div>
+  
+        <!-- 버튼 -->
+        <div class="mt-3 d-flex">
+          <button type="button" class="btn btn-light">취소</button>
+          <button type="button" class="btn btn-primary">완료</button>
+        </div>
       </div>
-
-      <!-- 제목 -->
-      <div class="row  mb-3">
-        <span class="col-1" style="font-size: 17px; line-height: 2.2;">제목</span>
-        <input name="title" type="text" class="form-control" style="width: 80%; margin-left: 11px;" placeholder="제목을 입력해주세요">
-      </div>
-
-      <!-- 내용 -->
-      <div class="row">
-        <span class="col-12" style="font-size: 17px; line-height: 2.2;">내용</span>
-        <textarea class="form-control" id="exampleFormControlTextarea1" rows="3" name="contents" style="margin-left: 13px; margint-rignt: 13px;"></textarea>
-      </div>
-
-      <!-- 버튼 -->
     </form>
   </div>
 </div>
