@@ -4,5 +4,33 @@
 {% block css %}<link rel="stylesheet" href="{% static 'css/community/community.css' %}">{% endblock css %}
 
 {% block content %}
-<h1>zz</h1>
+<p style="font-size: 30px;">전체글</p>
+
+<table class="table">
+    <thead>
+      <tr style="text-align: center;">
+        <td scope="col">게시판명</td>
+        <td scope="col">제목</td>
+        <td scope="col">글쓴이</td>
+        <td scope="col">등록일</td>
+        <td scope="col">조회</td>
+        <td scope="col">추천</td>
+        <td scope="col">스크랩</td>
+      </tr>
+    </thead>
+    <tbody>
+    {% for post in posts %}
+        <tr style="text-align: center;">
+            <td>{{ post.get_category_display }}</td>
+            <td>{{ post.title|truncatechars:35 }}</td>
+            <td>{{ post.writer|truncatechars:5 }}</td>
+            <td>{{ post.created_at|date:"y.m.d" }}</td>
+            <td></td>
+            <td></td>
+            <td></td>
+        </tr>   
+    {% endfor %}
+    </tbody>
+  </table>
+
 {% endblock content %}

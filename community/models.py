@@ -1,5 +1,4 @@
 from django.db import models
-from django.contrib.auth import get_user_model
 
 # Create your models here.
 category = {
@@ -9,7 +8,7 @@ category = {
 
 class Post(models.Model):
   writer = models.ForeignKey('accounts.User', on_delete=models.CASCADE)
-  category = models.CharField(max_length=20, choices=category, default="general")
+  category = models.CharField(max_length=20, choices=category, default="General")
   title = models.CharField(max_length=100)
   contents = models.TextField()
   created_at = models.DateTimeField(auto_now_add=True)

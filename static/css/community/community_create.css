@@ -1,0 +1,36 @@
+.cancleBtn {
+    padding: 8px 18px;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid rgb(221, 221, 221);
+    color: rgb(68, 68, 68);
+}
+
+.confirmBtn {
+    margin-left: 10px;
+    padding: 8px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    background: rgb(39 185 185);
+    border: 1px solid rgb(221, 221, 221);
+    color: white;
+}
+
+.cancleBtn:hover {
+    padding: 8px 18px;
+    cursor: pointer;
+    border-radius: 4px;
+    border: 1px solid rgb(221, 221, 221);
+    color: rgb(68, 68, 68);
+    background-color: rgb(219, 219, 219);
+}
+
+.confirmBtn:hover {
+    margin-left: 10px;
+    padding: 8px 18px;
+    border-radius: 4px;
+    cursor: pointer;
+    background: rgb(33, 153, 153);
+    border: 1px solid rgb(221, 221, 221);
+    color: white;
+}
