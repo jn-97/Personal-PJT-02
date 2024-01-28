@@ -10,3 +10,8 @@
   background-color: rgb(39 185 185);
   border-color: rgb(39 185 185);
 }
+
+.GoToDetail {
+  text-decoration: none;
+  color: black;
+}
