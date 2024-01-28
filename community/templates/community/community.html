@@ -21,8 +21,10 @@
     <tbody>
     {% for post in posts %}
         <tr style="text-align: center;">
+          <div class="list">
             <td>{{ post.get_category_display }}</td>
-            <td>{{ post.title|truncatechars:35 }}</td>
+            <td><a href="{% url 'community:detail' pk=post.pk %}">{{ post.title|truncatechars:35 }}</a></td>
+          </div>
             <td>{{ post.writer|truncatechars:5 }}</td>
             <td>{{ post.created_at|date:"y.m.d" }}</td>
             <td></td>

@@ -1,4 +1,4 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import PostForm
 from .models import Post
@@ -31,3 +31,8 @@ def community_create(request):
     form = PostForm()
 
   return render(request, 'community/community_create.html', {'form': form})
+
+def detail(request, pk):
+  post = get_object_or_404(Post, pk=pk)
+  
+  return render(request, 'community/detail.html', {'post': post})
