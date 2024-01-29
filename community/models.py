@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 category = {
   ("general", "자유게시판"),
-  ("qnA", "질문게시판"),
+  ("qna", "질문게시판"),
   ("wisesayings", "명언/좋은글귀"),
   ("family", "가족"),
   ("health", "건강/운동"),
