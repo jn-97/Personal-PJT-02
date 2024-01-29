@@ -1,8 +1,35 @@
 {% extends "base.html" %}
 {% load static %}
 
-{% block css %}{% endblock css %}
+{% block css %}<link rel="stylesheet" href="{% static 'css/community/detail.css' %}">{% endblock css %}
 
 {% block content %}
-{{ post.title }}
+<div class="header-1">
+  <p style="font-size: 30px;">전체글</p>
+</div>
+
+<div class="header-2">
+  <button class="category">{{ post.get_category_display }}</button>
+  <h1 class="my-3">{{ post.title }}</h1> 
+  <div class="d-flex">
+    <span>{{ post.writer }}</span>
+    <div style="width: 100%; margin-left: 6px;"> 
+      <div class="d-flex" style="justify-content: space-between;">
+        <span class="annotate">{{ post.created_at }}</span>
+        <div>
+          <span class="annotate">조회</span>
+          <span class="annotate">추천</span>
+          <span class="annotate">스크랩</span>
+        </div>
+      </div>     
+    </div>
+  </div>
+</div>
+
+<div class="body">
+  <div class="post-contents">
+    <p>{{ post.contents }}</p>
+  </div>
+</div>
+
 {% endblock content %}
