@@ -144,6 +144,27 @@ header {
     color: white;
 }
 
+.sidemenu-category {
+  margin-top: 2rem;
+}
+
+.main-category {
+  list-style-type: none;
+}
+
+.mini-category {
+  padding: 1rem;
+}
+
+.a-text {
+  color: rgb(95, 95, 95);
+  text-decoration-line: none;
+}
+
+.p-text {
+  font-size: 15px;
+}
+
 .mainMenu {
     width: 870px;
 }
