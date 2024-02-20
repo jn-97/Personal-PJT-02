@@ -35,7 +35,13 @@ def community_create(request):
 
   return render(request, 'community/community_create.html', {'form': form, 'category': category})
 
-def detail(request, pk):
+def detail(request, category_id, pk):
   post = get_object_or_404(Post, pk=pk)
   
   return render(request, 'community/detail.html', {'post': post})
+
+def category(request, category_id):
+  category = get_object_or_404(Category, id=category_id)
+  posts = Post.objects.filter(category=category)
+  
+  return render(request, 'community/category.html', {'category': category, 'posts': posts})
