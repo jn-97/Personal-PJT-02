@@ -41,7 +41,7 @@ def detail(request, category_id, pk):
   return render(request, 'community/detail.html', {'post': post})
 
 def category(request, category_id):
-  category = get_object_or_404(Category, id=category_id)
+  category = get_object_or_404(Category, id=category_id).order_by('-created_at')
   posts = Post.objects.filter(category=category)
   
   return render(request, 'community/category.html', {'category': category, 'posts': posts})

@@ -4,12 +4,8 @@
 {% block css %}<link rel="stylesheet" href="{% static 'css/community/detail.css' %}">{% endblock css %}
 
 {% block content %}
-<div class="header-1">
-  <p style="font-size: 30px;">전체글</p>
-</div>
-
 <div class="header-2">
-  <button class="category">{{ post.category }}</button>
+  <a href="{% url 'community:category' category_id=post.category.pk %}"><button class="category">{{ post.category }}</button></a>
   <h1 class="my-3">{{ post.title }}</h1> 
   <div class="d-flex">
     <span>{{ post.writer }}</span>

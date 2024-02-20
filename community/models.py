@@ -9,7 +9,7 @@ class Category(models.Model):
 
 class Post(models.Model):
   writer = models.ForeignKey('accounts.User', on_delete=models.CASCADE)
-  category = models.ForeignKey(Category, on_delete=models.CASCADE)
+  category = models.ForeignKey(Category, on_delete=models.CASCADE, null=True)
   title = models.CharField(max_length=100)
   contents = models.TextField()
   created_at = models.DateTimeField(auto_now_add=True)
