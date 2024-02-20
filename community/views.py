@@ -1,8 +1,8 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import PostForm
-from .models import Post
-from django.core.paginator import Paginator, PageNotAnInteger, EmptyPage
+from .models import Post, Category
+from django.core.paginator import Paginator
 
 # Create your views here.
 def community(request):
@@ -19,6 +19,9 @@ def community(request):
 
 @login_required
 def community_create(request):
+
+  category = Category.objects.all()
+
   if request.method == 'POST':
     form = PostForm(request.POST)
 
@@ -30,7 +33,7 @@ def community_create(request):
   else:
     form = PostForm()
 
-  return render(request, 'community/community_create.html', {'form': form})
+  return render(request, 'community/community_create.html', {'form': form, 'category': category})
 
 def detail(request, pk):
   post = get_object_or_404(Post, pk=pk)
