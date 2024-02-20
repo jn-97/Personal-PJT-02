@@ -21,7 +21,7 @@
     <tbody>
     {% for post in posts %}
         <tr style="text-align: center;">
-            <td style="cursor: pointer;"><a class="GoToDetail" href="{% url 'community:detail' pk=post.pk %}">{{ post.get_category_display }}</a></td>
+            <td style="cursor: pointer;"><a class="GoToDetail" href="{% url 'community:detail' pk=post.pk %}">{{ post.category }}</a></td>
             <td style="cursor: pointer;"><a class="GoToDetail" href="{% url 'community:detail' pk=post.pk %}">{{ post.title|truncatechars:35 }}</a></td>
             <td>{{ post.writer|truncatechars:5 }}</td>
             <td>{{ post.created_at|date:"y.m.d" }}</td>

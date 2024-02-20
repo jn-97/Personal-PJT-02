@@ -14,27 +14,9 @@
         <span class="col-1" style="font-size: 17px; line-height: 2.2;">게시판</span>
         <span class="col-6">
           <select class="form-select" aria-label="Small select example" name="category" id="id_category">
-            <option value="general">자유게시판</option>
-            <option value="qna">질문게시판</option>
-            <option value="wisesayings">명언/좋은글귀</option>
-            <option value="family">가족</option>
-            <option value="health">건강/운동</option>
-            <option value="marry">결혼/부부</option>
-            <option value="money">금전/재테크</option>
-            <option value="diet">다이어트/외모</option>
-            <option value="relationship">대인관계</option>
-            <option value="pet">반려 동식물</option>
-            <option value="life">삶/죽음</option>
-            <option value="gender">성</option>
-            <option value="travel">여행</option>
-            <option value="love">연애/사랑</option>
-            <option value="recipe">요리/식단</option>
-            <option value="religion">종교</option>
-            <option value="hobby">취미</option>
-            <option value="career">취업/진로</option>
-            <option value="friend">친구/우정</option>
-            <option value="mind">정신건강</option>
-            <option value="mbti">MBTI</option>
+            {% for c in category %}
+            <option value="{{ c.id }}">{{ c.name }}</option>
+            {% endfor %}
           </select>
         </span>
       </div>
