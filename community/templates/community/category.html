@@ -1,9 +1,15 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block mini-category %}
+{% for category in categories %}
+<a href="{% url 'community:category' category_id=category.id %}" class="a-text"><p class="p-text">{{ category.name }}</p></a>
+{% endfor %}
+{% endblock mini-category %}
+
 {% block content %}
 
-<p style="font-size: 30px;">{{ category.name }}</p>
+<p style="font-size: 30px;">{{ categories.name }}</p>
 
 <ul>
     {% for post in posts %}

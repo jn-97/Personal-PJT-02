@@ -12,7 +12,7 @@ def community(request):
   page_obj = paginator.get_page(page)
 
   context = {
-    'posts': page_obj
+    'posts': page_obj,
   }
 
   return render(request, 'community/community.html', context)
@@ -20,7 +20,7 @@ def community(request):
 @login_required
 def community_create(request):
 
-  category = Category.objects.all()
+  posts = Post.objects.all().order_by('-created_at')
 
   if request.method == 'POST':
     form = PostForm(request.POST)
@@ -33,15 +33,28 @@ def community_create(request):
   else:
     form = PostForm()
 
-  return render(request, 'community/community_create.html', {'form': form, 'category': category})
+  context = {
+    'posts': posts,
+    'form': form,
+  }
+
+  return render(request, 'community/community_create.html', context)
 
 def detail(request, category_id, pk):
   post = get_object_or_404(Post, pk=pk)
+  category = Category.objects.all().order_by('-id')
   
-  return render(request, 'community/detail.html', {'post': post})
+  return render(request, 'community/detail.html', {'post': post, 'category': category})
 
 def category(request, category_id):
-  category = get_object_or_404(Category, id=category_id).order_by('-created_at')
+  category = get_object_or_404(Category, id=category_id)
   posts = Post.objects.filter(category=category)
+  categories = Category.objects.all().order_by('-id')
+
+  context = {
+    'category': category,
+    'posts': posts,
+    'categories': categories,
+  }
   
-  return render(request, 'community/category.html', {'category': category, 'posts': posts})
+  return render(request, 'community/category.html', context)

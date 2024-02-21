@@ -3,6 +3,12 @@
 
 {% block css %}<link rel="stylesheet" href="{% static 'css/community/detail.css' %}">{% endblock css %}
 
+{% block mini-category %}
+{% for c in category %}
+<a href="{% url 'community:category' category_id=post.category.pk %}" class="a-text"><p class="p-text">{{ c.name }}</p></a>
+{% endfor %}
+{% endblock mini-category %}
+
 {% block content %}
 <div class="header-2">
   <a href="{% url 'community:category' category_id=post.category.pk %}"><button class="category">{{ post.category }}</button></a>
