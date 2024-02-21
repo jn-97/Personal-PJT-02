@@ -8,11 +8,13 @@ from django.core.paginator import Paginator
 def community(request):
   page = request.GET.get('page', '1')
   posts = Post.objects.all().order_by('-created_at')
+  category = Category.objects.all()
   paginator = Paginator(posts, 20)
   page_obj = paginator.get_page(page)
 
   context = {
     'posts': page_obj,
+    'category': category,
   }
 
   return render(request, 'community/community.html', context)
@@ -21,6 +23,7 @@ def community(request):
 def community_create(request):
 
   posts = Post.objects.all().order_by('-created_at')
+  category = Category.objects.all()
 
   if request.method == 'POST':
     form = PostForm(request.POST)
@@ -35,6 +38,7 @@ def community_create(request):
 
   context = {
     'posts': posts,
+    'category': category,
     'form': form,
   }
 
@@ -42,14 +46,14 @@ def community_create(request):
 
 def detail(request, category_id, pk):
   post = get_object_or_404(Post, pk=pk)
-  category = Category.objects.all().order_by('-id')
+  category = Category.objects.all()
   
   return render(request, 'community/detail.html', {'post': post, 'category': category})
 
 def category(request, category_id):
   category = get_object_or_404(Category, id=category_id)
   posts = Post.objects.filter(category=category)
-  categories = Category.objects.all().order_by('-id')
+  categories = Category.objects.all()
 
   context = {
     'category': category,
