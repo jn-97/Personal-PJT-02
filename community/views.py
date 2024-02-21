@@ -51,13 +51,16 @@ def detail(request, category_id, pk):
   return render(request, 'community/detail.html', {'post': post, 'category': category})
 
 def category(request, category_id):
+  page = request.GET.get('page', '1')
   category = get_object_or_404(Category, id=category_id)
   posts = Post.objects.filter(category=category)
   categories = Category.objects.all()
+  paginator = Paginator(posts, 20)
+  page_obj = paginator.get_page(page)
 
   context = {
     'category': category,
-    'posts': posts,
+    'posts': page_obj,
     'categories': categories,
   }
   

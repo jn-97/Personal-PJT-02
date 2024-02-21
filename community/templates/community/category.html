@@ -1,6 +1,8 @@
 {% extends "base.html" %}
 {% load static %}
 
+{% block css %}<link rel="stylesheet" href="{% static 'css/community/community.css' %}">{% endblock css %}
+
 {% block mini-category %}
 {% for category in categories %}
 <a href="{% url 'community:category' category_id=category.id %}" class="a-text"><p class="p-text">{{ category.name }}</p></a>
@@ -9,12 +11,67 @@
 
 {% block content %}
 
-<p style="font-size: 30px;">{{ categories.name }}</p>
+<p style="font-size: 30px;">{{ category.name }}</p>
 
-<ul>
-    {% for post in posts %}
-        <li><a href="{{ post.get_absolute_url }}">{{ post.title }}</a></li>
-    {% endfor %}
-</ul>
+<table class="table">
+  <thead>
+    <tr style="text-align: center;">
+      <td scope="col">게시판명</td>
+      <td scope="col">제목</td>
+      <td scope="col">글쓴이</td>
+      <td scope="col">등록일</td>
+      <td scope="col">조회</td>
+      <td scope="col">추천</td>
+      <td scope="col">스크랩</td>
+    </tr>
+  </thead>
+  <tbody>
+  {% for post in posts %}
+      <tr style="text-align: center;">
+          <td style="cursor: pointer;"><a class="GoToDetail" href="{% url 'community:detail' category_id=post.category.pk pk=post.pk %}">{{ post.category }}</a></td>
+          <td style="cursor: pointer;"><a class="GoToDetail" href="{% url 'community:detail' category_id=post.category.pk pk=post.pk %}">{{ post.title|truncatechars:35 }}</a></td>
+          <td>{{ post.writer|truncatechars:5 }}</td>
+          <td>{{ post.created_at|date:"y.m.d" }}</td>
+          <td></td>
+          <td></td>
+          <td></td>
+      </tr>   
+  {% endfor %}
+</tbody> 
+</table>
+<ul class="pagination justify-content-center">
+<!-- 이전페이지 -->
+{% if posts.has_previous %}
+<li class="page-item">
+    <a class="page-link" href="?page={{ posts.previous_page_number }}">이전</a>
+</li>
+{% else %}
+<li class="page-item disabled">
+    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">이전</a>
+</li>
+{% endif %}
+<!-- 페이지리스트 -->
+{% for page_number in posts.paginator.page_range %}
+{% if page_number == posts.number %}
+<li class="page-item active" aria-current="page">
+    <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+</li>
+{% else %}
+<li class="page-item">
+    <a class="page-link" href="?page={{ page_number }}">{{ page_number }}</a>
+</li>
+{% endif %}
+{% endfor %}
+<!-- 다음페이지 -->
+{% if posts.has_next %}
+<li class="page-item">
+    <a class="page-link" href="?page={{ posts.next_page_number }}">다음</a>
+</li>
+{% else %}
+<li class="page-item disabled">
+    <a class="page-link" tabindex="-1" aria-disabled="true" href="#">다음</a>
+</li>
+{% endif %}
+</ul>  
 
 {% endblock content %}
