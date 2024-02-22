@@ -47,6 +47,8 @@ def community_create(request):
 def detail(request, category_id, pk):
   post = get_object_or_404(Post, pk=pk)
   category = Category.objects.all()
+
+  post.increase_views()
   
   return render(request, 'community/detail.html', {'post': post, 'category': category})
 
