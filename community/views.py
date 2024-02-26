@@ -67,3 +67,14 @@ def category(request, category_id):
   }
   
   return render(request, 'community/category.html', context)
+
+def like_post(request, category_id, pk):
+  post = get_object_or_404(Post, pk=pk)
+
+  if request.user.is_authenticated:
+    if request.user in post.likes.all():
+      post.likes.remove(request.user)
+    else:
+      post.likes.add(request.user)
+
+  return redirect('community:detail', category_id=post.category.pk, pk=pk)
