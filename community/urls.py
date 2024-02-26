@@ -6,7 +6,8 @@ app_name = 'community'
 urlpatterns = [
     path('', views.community, name="community"),
     path('community_create/', views.community_create, name="community_create"),
-    path('<int:category_id>/<int:pk>/', views.detail, name="detail"),
     path('<int:category_id>/', views.category, name="category"),
-    path('<int:category_id>/<int:pk>/like/', views.like_post, name="like_post"),
+    path('<int:category_id>/<int:pk>/', views.detail, name="detail"),
+    path('<int:category_id>/<int:pk>/like/', views.like_post, name="like_post"), # 좋아요
+    path('<int:category_id>/<int:pk>/comment/', views.add_comment, name="add_comment"), # 댓글
 ]

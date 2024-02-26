@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.contrib.auth.decorators import login_required
 from .forms import PostForm
-from .models import Post, Category
+from .models import Post, Category, Comment
 from django.core.paginator import Paginator
 
 # Create your views here.
@@ -78,3 +78,13 @@ def like_post(request, category_id, pk):
       post.likes.add(request.user)
 
   return redirect('community:detail', category_id=post.category.pk, pk=pk)
+
+def add_comment(request, category_id, pk):
+  post = get_object_or_404(Post, pk=pk)
+  
+  if request.method == 'POST':
+    content = request.POST.get('content')
+      
+    if content:
+      comment = Comment.objects.create(user=request.user, post=post, content=content)
+  return redirect('community:detail', category_id=category_id, pk=pk) 
