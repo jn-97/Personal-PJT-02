@@ -20,7 +20,7 @@
         <span class="annotate">{{ post.created_at }}</span>
         <div>
           <span class="annotate">조회 {{ post.views }}</span>
-          <span class="annotate">추천</span>
+          <span class="annotate">추천 {{ post.likes.count }}</span>
           <span class="annotate">스크랩</span>
         </div>
       </div>     
@@ -34,17 +34,21 @@
   </div>
 </div>
 
-{% if request.user.is_authenticated %}
-    <form action="{% url 'community:like_post' category_id=post.category.pk pk=post.pk %}" method="post">
-        {% csrf_token %}
-        <button type="submit">
+<div class="btn_box d-flex justify-content-center">
+  {% if request.user.is_authenticated %}
+      <form action="{% url 'community:like_post' category_id=post.category.pk pk=post.pk %}" method="post">
+          {% csrf_token %}
             {% if request.user in post.likes.all %}
-                Unlike
+            <button type="submit" class="like_btn">
+              <span>좋아요</span>
+            </button>
             {% else %}
-                Like
+            <button type="submit" class="unlike_btn">
+              <span>좋아요</span>
+            </button>
             {% endif %}
-        </button>
-    </form>
-{% endif %}
+      </form>
+  {% endif %}
+</div>
 
 {% endblock content %}
