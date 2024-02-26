@@ -34,6 +34,7 @@
   </div>
 </div>
 
+<!-- 좋아요 -->
 <div class="btn_box d-flex justify-content-center">
   {% if request.user.is_authenticated %}
       <form action="{% url 'community:like_post' category_id=post.category.pk pk=post.pk %}" method="post">
@@ -50,5 +51,21 @@
       </form>
   {% endif %}
 </div>
+
+<!-- 댓글 -->
+<form action="{% url 'community:add_comment' category_id=post.category.pk pk=post.pk %}" method="post">
+  {% csrf_token %}
+  <textarea name="content" rows="4" cols="50"></textarea><br>
+  <input type="submit" value="Add Comment">
+</form>
+
+{% for comment in post.comment_set.all %}
+  <p>{{ comment.content }}</p>
+  <p>{{ comment.user.username }}</p>
+  <hr>
+{% empty %}
+  <p>No comments yet.</p>
+{% endfor %}
+
 
 {% endblock content %}
