@@ -53,19 +53,24 @@
 </div>
 
 <!-- 댓글 -->
-<form action="{% url 'community:add_comment' category_id=post.category.pk pk=post.pk %}" method="post">
-  {% csrf_token %}
-  <textarea name="content" rows="4" cols="50"></textarea><br>
-  <input type="submit" value="Add Comment">
-</form>
+<div class="mt-5">
+  <form action="{% url 'community:add_comment' category_id=post.category.pk pk=post.pk %}" method="post">
+    {% csrf_token %}
+    <div class="d-flex justify-content-center mb-5">
+      <textarea name="content" rows="4" cols="100" class="comment-text"></textarea>
+      <input type="submit" value="등록" class="comment-btn">
+    </div>
+  </form>
 
-{% for comment in post.comment_set.all %}
-  <p>{{ comment.content }}</p>
-  <p>{{ comment.user.username }}</p>
-  <hr>
-{% empty %}
-  <p>No comments yet.</p>
-{% endfor %}
+  {% for comment in post.comment_set.all %}
+    <p>{{ comment.user.username }}</p>
+    <p>{{ comment.content }}</p>
+    <p style="font-size: 15px; color: gray;">{{ comment.created_at }}</p>
+    <hr>
+  {% empty %}
+    <p>No comments yet.</p>
+  {% endfor %}
+</div>
 
 
 {% endblock content %}
