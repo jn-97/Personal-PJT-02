@@ -66,9 +66,6 @@
     <p>{{ comment.user.username }}</p>
     <p>{{ comment.content }}</p>
     <p style="font-size: 15px; color: gray;">{{ comment.created_at }}</p>
-    <hr>
-  {% empty %}
-    <p>No comments yet.</p>
   {% endfor %}
 </div>
 
