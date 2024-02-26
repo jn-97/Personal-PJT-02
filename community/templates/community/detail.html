@@ -34,4 +34,17 @@
   </div>
 </div>
 
+{% if request.user.is_authenticated %}
+    <form action="{% url 'community:like_post' category_id=post.category.pk pk=post.pk %}" method="post">
+        {% csrf_token %}
+        <button type="submit">
+            {% if request.user in post.likes.all %}
+                Unlike
+            {% else %}
+                Like
+            {% endif %}
+        </button>
+    </form>
+{% endif %}
+
 {% endblock content %}

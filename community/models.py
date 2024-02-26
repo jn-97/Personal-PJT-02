@@ -1,4 +1,5 @@
 from django.db import models
+from django.conf import settings
 
 # Create your models here.
 class Category(models.Model):
@@ -15,6 +16,7 @@ class Post(models.Model):
   created_at = models.DateTimeField(auto_now_add=True)
   updated_at = models.DateTimeField(auto_now=True)
   views = models.IntegerField(default=0) # 조회수
+  likes = models.ManyToManyField(settings.AUTH_USER_MODEL, related_name="liked_posts", blank=True) # 좋아요
 
   def __str__(self):
     return self.title
