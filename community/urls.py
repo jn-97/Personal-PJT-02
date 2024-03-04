@@ -10,4 +10,5 @@ urlpatterns = [
     path('<int:category_id>/<int:pk>/', views.detail, name="detail"),
     path('<int:category_id>/<int:pk>/like/', views.like_post, name="like_post"), # 좋아요
     path('<int:category_id>/<int:pk>/comment/', views.add_comment, name="add_comment"), # 댓글
+    path('toggle_bookmark/<int:post_id>/', views.toggle_bookmark, name='toggle_bookmark'),
 ]
