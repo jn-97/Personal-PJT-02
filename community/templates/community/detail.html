@@ -66,6 +66,11 @@
     <p>{{ comment.user.username }}</p>
     <p>{{ comment.content }}</p>
     <p style="font-size: 15px; color: gray;">{{ comment.created_at }}</p>
+    
+    <!-- 가장 마지막 댓글은 밑줄 X -->
+    {% if not forloop.last %}
+      <hr>
+    {% endif %}
   {% endfor %}
 </div>
 
