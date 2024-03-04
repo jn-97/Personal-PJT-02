@@ -3,6 +3,7 @@ from django.contrib.auth.decorators import login_required
 from .forms import PostForm
 from .models import Post, Category, Comment
 from django.core.paginator import Paginator
+from django.http import JsonResponse
 
 # Create your views here.
 def community(request):
@@ -88,3 +89,22 @@ def add_comment(request, category_id, pk):
     if content:
       comment = Comment.objects.create(user=request.user, post=post, content=content)
   return redirect('community:detail', category_id=category_id, pk=pk) 
+
+@login_required
+def toggle_bookmark(request, post_id):
+  post = get_object_or_404(Post, pk=post_id)
+  
+  # 사용자가 현재 게시물을 북마크한 경우 북마크를 제거하고, 아닌 경우 북마크를 추가합니다.
+  if post in request.user.bookmarks.all():
+    request.user.bookmarks.remove(post)
+    bookmarked = False
+  else:
+    request.user.bookmarks.add(post)
+    bookmarked = True
+
+  # Ajax 요청에 대한 응답
+  if request.is_ajax():
+    return JsonResponse({'bookmarked': bookmarked})
+  else:
+    # 비동기 요청이 아닌 경우, 해당 게시물의 상세 페이지로 리다이렉트합니다.
+    return redirect('community:detail', category_id=post.category.pk, pk=post_id)
