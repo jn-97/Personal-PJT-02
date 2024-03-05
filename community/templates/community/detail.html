@@ -36,30 +36,34 @@
   </div>
 </div>
 
-{% if request.user.is_authenticated %}
-    {% if post in request.user.bookmark_set.all %}
-        <a href="{% url 'community:toggle_bookmark' post_id=post.id %}" class="btn btn-danger">Remove Bookmark</a>
-    {% else %}
-        <a href="{% url 'community:toggle_bookmark' post_id=post.id %}" class="btn btn-primary">Add Bookmark</a>
-    {% endif %}
-{% endif %}
-
-<!-- 좋아요 -->
 <div class="btn_box d-flex justify-content-center">
-  {% if request.user.is_authenticated %}
-      <form action="{% url 'community:like_post' category_id=post.category.pk pk=post.pk %}" method="post">
-          {% csrf_token %}
-            {% if request.user in post.likes.all %}
-            <button type="submit" class="like_btn">
-              <span>좋아요</span>
-            </button>
-            {% else %}
-            <button type="submit" class="unlike_btn">
-              <span>좋아요</span>
-            </button>
-            {% endif %}
-      </form>
-  {% endif %}
+  <!-- 좋아요 -->
+  <div>
+    {% if request.user.is_authenticated %}
+        <form action="{% url 'community:like_post' category_id=post.category.pk pk=post.pk %}" method="post">
+            {% csrf_token %}
+              {% if request.user in post.likes.all %}
+              <button type="submit" class="like_btn">
+                <span>좋아요</span>
+              </button>
+              {% else %}
+              <button type="submit" class="unlike_btn">
+                <span>좋아요</span>
+              </button>
+              {% endif %}
+        </form>
+    {% endif %}
+  </div>
+  <!-- 스크랩 -->
+  <div style="margin-left: 1rem;">
+    {% if request.user.is_authenticated %}
+        {% if post in request.user.bookmark_set.all %}
+            <a href="{% url 'community:toggle_bookmark' post_id=post.id %}" class="btn like_btn">스크랩</a>
+        {% else %}
+            <a href="{% url 'community:toggle_bookmark' post_id=post.id %}" class="btn unlike_btn">스크랩</a>
+        {% endif %}
+    {% endif %}
+  </div>
 </div>
 
 <!-- 댓글 -->
