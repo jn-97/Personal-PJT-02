@@ -12,10 +12,13 @@ def community(request):
   category = Category.objects.all()
   paginator = Paginator(posts, 20)
   page_obj = paginator.get_page(page)
+  # 스크랩
+  bookmarked_posts_count = request.user.bookmarks.count()
 
   context = {
     'posts': page_obj,
     'category': category,
+    'bookmarked_posts_count': bookmarked_posts_count,
   }
 
   return render(request, 'community/community.html', context)
@@ -25,6 +28,8 @@ def community_create(request):
 
   posts = Post.objects.all().order_by('-created_at')
   category = Category.objects.all()
+  # 스크랩
+  bookmarked_posts_count = request.user.bookmarks.count()
 
   if request.method == 'POST':
     form = PostForm(request.POST)
@@ -41,6 +46,7 @@ def community_create(request):
     'posts': posts,
     'category': category,
     'form': form,
+    'bookmarked_posts_count': bookmarked_posts_count,
   }
 
   return render(request, 'community/community_create.html', context)
@@ -48,10 +54,19 @@ def community_create(request):
 def detail(request, category_id, pk):
   post = get_object_or_404(Post, pk=pk)
   category = Category.objects.all()
+   # 스크랩
+  bookmarked_posts_count = request.user.bookmarks.count()
 
   post.increase_views()
+
+  context = {
+    'post': post,
+    'category': category,
+    'bookmarked_posts_count': bookmarked_posts_count,
+  }
+
   
-  return render(request, 'community/detail.html', {'post': post, 'category': category})
+  return render(request, 'community/detail.html', context)
 
 def category(request, category_id):
   page = request.GET.get('page', '1')
@@ -60,11 +75,14 @@ def category(request, category_id):
   categories = Category.objects.all()
   paginator = Paginator(posts, 20)
   page_obj = paginator.get_page(page)
+  # 스크랩
+  bookmarked_posts_count = request.user.bookmarks.count()
 
   context = {
     'category': category,
     'posts': page_obj,
     'categories': categories,
+    'bookmarked_posts_count': bookmarked_posts_count,
   }
   
   return render(request, 'community/category.html', context)

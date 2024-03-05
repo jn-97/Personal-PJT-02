@@ -9,6 +9,9 @@
 {% endfor %}
 {% endblock mini-category %}
 
+<!-- 스크랩 -->
+{% block scrap %}{{ bookmarked_posts_count }}{% endblock scrap %}
+
 {% block content %}
 <div class="header-2">
   <a href="{% url 'community:category' category_id=post.category.pk %}"><button class="category">{{ post.category }}</button></a>
@@ -21,7 +24,6 @@
         <div>
           <span class="annotate">조회 {{ post.views }}</span>
           <span class="annotate">추천 {{ post.likes.count }}</span>
-          <span class="annotate">스크랩 {{ request.user.bookmarks.count }}</span>
         </div>
       </div>     
     </div>

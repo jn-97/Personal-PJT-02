@@ -9,6 +9,9 @@
 {% endfor %}
 {% endblock mini-category %}
 
+<!-- 스크랩 -->
+{% block scrap %}{{ bookmarked_posts_count }}{% endblock scrap %}
+
 {% block content %}
 <p style="font-size: 30px;">전체글</p>
 
@@ -20,8 +23,7 @@
         <td scope="col">글쓴이</td>
         <td scope="col">등록일</td>
         <td scope="col">조회</td>
-        <td scope="col">추천</td>
-        <td scope="col">스크랩</td>
+        <td scope="col">추천</td>       
       </tr>
     </thead>
     <tbody>
@@ -32,8 +34,7 @@
             <td>{{ post.writer|truncatechars:5 }}</td>
             <td>{{ post.created_at|date:"y.m.d" }}</td>
             <td>{{ post.views }}</td>
-            <td>{{ post.likes.count }}</td>
-            <td></td>
+            <td>{{ post.likes.count }}</td>           
         </tr>   
     {% endfor %}
   </tbody> 
