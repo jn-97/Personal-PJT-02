@@ -109,7 +109,20 @@ def update(request, category_id, pk):
   return render(request, 'community/update.html', context)
 
 def delete(request, category_id, pk):
-  return render(request, 'community/delete.html')
+  # 삭제할 게시물 객체를 가져옵니다.
+  post = get_object_or_404(Post, pk=pk)
+  category = Category.objects.all()
+
+  # 사용자가 작성한 게시물인지 확인합니다.
+  if post.writer != request.user:
+    # 작성자가 아닌 경우, 상세 페이지로 리다이렉트합니다.
+    return redirect('community:detail', category_id=category_id, pk=pk)
+
+  # 게시물을 삭제합니다.
+  post.delete()
+
+  # 게시물 목록 페이지로 리다이렉트합니다.
+  return redirect('community:community')
 
 def category(request, category_id):
   page = request.GET.get('page', '1')
