@@ -20,7 +20,12 @@
     <span>{{ post.writer }}</span>
     <div style="width: 100%; margin-left: 6px;"> 
       <div class="d-flex" style="justify-content: space-between;">
-        <span class="annotate">{{ post.created_at }}</span>
+        <div>
+          <span class="annotate">{{ post.created_at }}</span>
+          <!-- 수정/삭제 -->
+          <span><a href="{% url 'community:update' category_id=post.category_id pk=post.pk %}">수정</a></span>
+          <span><a href="{% url 'community:delete' category_id=post.category.pk pk=post.pk %}" style="color: red;">삭제</a></span>
+        </div>
         <div>
           <span class="annotate">조회 {{ post.views }}</span>
           <span class="annotate">추천 {{ post.likes.count }}</span>
@@ -29,6 +34,8 @@
     </div>
   </div>
 </div>
+
+
 
 <div class="body">
   <div class="post-contents">

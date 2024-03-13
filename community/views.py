@@ -77,6 +77,40 @@ def detail(request, category_id, pk):
   
   return render(request, 'community/detail.html', context)
 
+@login_required
+def update(request, category_id, pk):
+  posts = get_object_or_404(Post, pk=pk)
+  category = Category.objects.all()
+  # 스크랩
+  if request.user.is_authenticated:
+    bookmarked_posts_count = request.user.bookmarks.count()
+  else:
+    bookmarked_posts_count = 0
+
+  # 게시물 작성자만 수정할 수 있도록 권한을 확인합니다.
+  if posts.writer != request.user:
+    return redirect('community:detail', category_id=posts.category.pk, pk=pk)
+
+  if request.method == 'POST':
+    form = PostForm(request.POST, instance=posts)
+    if form.is_valid():
+      form.save()
+      return redirect('community:detail', category_id=posts.category.pk, pk=pk)
+  else:
+    form = PostForm(instance=posts)
+
+  context = {
+    'posts': posts,
+    'category': category,
+    'form': form,
+    'bookmarked_posts_count': bookmarked_posts_count,
+  }
+
+  return render(request, 'community/update.html', context)
+
+def delete(request, category_id, pk):
+  return render(request, 'community/delete.html')
+
 def category(request, category_id):
   page = request.GET.get('page', '1')
   category = get_object_or_404(Category, id=category_id)
