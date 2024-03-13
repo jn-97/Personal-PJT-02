@@ -22,9 +22,11 @@
       <div class="d-flex" style="justify-content: space-between;">
         <div>
           <span class="annotate">{{ post.created_at }}</span>
+          {% if request.user.is_authenticated and request.user == post.writer %}
           <!-- 수정/삭제 -->
           <span><a href="{% url 'community:update' category_id=post.category_id pk=post.pk %}">수정</a></span>
           <span><a href="{% url 'community:delete' category_id=post.category.pk pk=post.pk %}" style="color: red;">삭제</a></span>
+          {% endif %}
         </div>
         <div>
           <span class="annotate">조회 {{ post.views }}</span>
