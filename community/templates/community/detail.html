@@ -88,7 +88,10 @@
   {% for comment in post.comment_set.all %}
     <p>{{ comment.user.username }}</p>
     <p>{{ comment.content }}</p>
-    <p style="font-size: 15px; color: gray;">{{ comment.created_at }}</p>
+    <span style="font-size: 15px; color: gray;">{{ comment.created_at }}</span>
+    {% if request.user.is_authenticated and request.user == comment.user %}
+      <span><a style="color: red;" href="{% url 'community:delete_comment' category_id=post.category.pk pk=post.pk comment_id=comment.pk %}">삭제</a></span>
+    {% endif %}
     
     <!-- 가장 마지막 댓글은 밑줄 X -->
     {% if not forloop.last %}

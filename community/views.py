@@ -167,6 +167,12 @@ def add_comment(request, category_id, pk):
       comment = Comment.objects.create(user=request.user, post=post, content=content)
   return redirect('community:detail', category_id=category_id, pk=pk) 
 
+def delete_comment(request, category_id, pk, comment_id):
+  comment = get_object_or_404(Comment, pk=comment_id)  
+  comment.delete()
+
+  return redirect('community:detail', category_id=category_id, pk=pk)
+
 @login_required
 def toggle_bookmark(request, post_id):
   post = get_object_or_404(Post, pk=post_id)
