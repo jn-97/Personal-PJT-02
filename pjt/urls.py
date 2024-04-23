@@ -17,6 +17,7 @@ from django.contrib import admin
 from django.urls import path, include
 
 from community.api import PostList, PostDetail
+from rest_framework.authtoken import views
 
 urlpatterns = [
     path('', include('community.urls')),
@@ -24,4 +25,5 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('api/post_list', PostList.as_view(), name='post_list'),
     path('api/post_list/<int:id>', PostDetail.as_view(), name='post_list'),
+    path('api/auth', views.obtain_auth_token, name='obtain_auth_token'),
 ]
