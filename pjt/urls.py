@@ -16,8 +16,11 @@ Including another URLconf
 from django.contrib import admin
 from django.urls import path, include
 
+from community.api import PostList
+
 urlpatterns = [
     path('', include('community.urls')),
     path('accounts/', include('allauth.urls')),
     path('admin/', admin.site.urls),
+    path('api/post_list', PostList.as_view(), name='post_list'),
 ]
