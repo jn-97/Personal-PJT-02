@@ -3,7 +3,11 @@ from .models import Post
 
 class PostSerializer(serializers.ModelSerializer):
 
+  writer = serializers.CharField(required=False)
+  title = serializers.CharField(required=False)
+  contents = serializers.CharField(required=False)
+
   class Meta:
 
     model = Post
-    fields = ['writer', 'category', 'title', 'contents']
+    fields = '__all__'
