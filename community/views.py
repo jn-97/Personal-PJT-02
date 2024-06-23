@@ -26,8 +26,11 @@ def community(request):
 
   return render(request, 'community/community.html', context)
 
-def test(request):
-  return render(request, 'community/test.html')
+def coolitems(request):
+  return render(request, 'community/coolitems.html')
+
+def fabric(request):
+  return render(request, 'community/fabric.html')
 
 @login_required
 def community_create(request):
