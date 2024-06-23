@@ -26,6 +26,9 @@ def community(request):
 
   return render(request, 'community/community.html', context)
 
+def test(request):
+  return render(request, 'community/test.html')
+
 @login_required
 def community_create(request):
 
