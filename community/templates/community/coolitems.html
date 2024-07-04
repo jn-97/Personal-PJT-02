@@ -5,220 +5,482 @@
 
 {% block css %}<link rel="stylesheet" href="{% static 'css/community/coolitems.css' %}">{% endblock css %}
 
-<!-- 탭 메뉴 버튼들 -->
-<div class="tab-menu">
-  <button class="tab-link active" onclick="openTab(event, 'Tab1')">의사가운</button>
-  <button class="tab-link" onclick="openTab(event, 'Tab2')">수술복</button>
-  <button class="tab-link" onclick="openTab(event, 'Tab3')">뷰티/미용</button>
-  <button class="tab-link" onclick="openTab(event, 'Tab4')">환자복</button>
-  <button class="tab-link" onclick="openTab(event, 'Tab5')">event</button>
+<style>
+.xans-layout-logotop { width:100%; display:flex; justify-content:center;}
+.xans-layout-logotop img { } 
+
+body {
+  font-family: Arial, sans-serif;
+  text-align: center;
+}
+    
+.banner-img {
+  width: 100%;
+  height: auto;
+}
+
+/* 탭 버튼 스타일 */
+.tab-link {
+  background-color: #ffffff;
+  border: 1px solid gray;
+  outline: none;
+  padding: 5px 0px 5px 0px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s;
+}
+
+/* 탭 버튼 호버 스타일 */
+.tab-link:hover {
+  background-color: #eeeeee;
+}
+
+/* 활성화된 탭 버튼 스타일 */
+.tab-link.active {
+  background-color: #363636;
+  color: white;
+}
+
+/* 탭 콘텐츠 스타일 */
+.tab-content {
+  display: none;
+  padding: 0PX;
+  margin: 0px auto;
+  background-color: #fff;
+  text-align: center;
+  max-width: 1700px;
+}
+    
+.card-img-top {
+  object-fit: cover;
+  transform:scale(1.0);        
+  transition: transform .3s; 
+  border-radius: 0px;
+  height: 250px;
+}
+
+.card-img-top:hover {
+  transform: scale(1.03);
+  transition: transform .3s; 
+}
+
+.card {
+  border: 0px;
+  border-radius: 0px;
+  cursor: pointer;
+}
+    
+.card-body {
+   padding: 10px;
+}
+
+.card-title {
+  font-weight: 600;
+  margin: 0px;
+}
+    
+.card-text {
+  font-size: 15px;
+}
+
+.card-text p {
+  color: grey;
+  margin: 0px;
+}
+    
+.card-text span {
+  color: rgb(165, 165, 165);
+  margin: 0px;
+}
+    
+.card-link {
+  text-decoration: none;
+}
+
+/* 반응형 디자인을 위한 미디어 쿼리 */
+@media (max-width: 980px) {
+  .card-img-top { height: auto; }
+  .card { margin-top: 5rem; }
+}
+
+@media (max-width: 480px) {
+  .card-img-top { height: auto; }
+  .card { margin-top: 1rem; }
+}
+
+</style>
+
+<div>
+  <h1 module="Layout_LogoTop" style="margin-top: 30px; margin-bottom: 30px;">  
+    <a href="/index.html"><img src="{$logo}" alt="{$mall_name}" /></a> 
+  </h1>
 </div>
 
-<!-- 각 탭의 콘텐츠 영역 / 메인 배너 이미지 고정 -->
-<div class="main-banner">
-  <img src="https://sappira.co.kr/web/upload/category/shop1_302_top_478061.jpg">
-</div>
+<div class="container text-center">
+  <div class="row">
+    <div class="col col-12 col-md-12 col-lg-5">
+      <div class="tab-menu">
+        <button class="tab-link active" onclick="openTab(event, 'Tab1')">의사가운</button>
+        <button class="tab-link" onclick="openTab(event, 'Tab2')">간호사복</button>
+        <button class="tab-link" onclick="openTab(event, 'Tab3')">뷰티/미용</button>
+        <button class="tab-link" onclick="openTab(event, 'Tab4')">수술복</button>
+        <button class="tab-link" onclick="openTab(event, 'Tab5')">기타</button>
+      </div>
+    </div>
+    <div class="col-lg-1"></div>
+    <div class="col-lg-6"></div>
+  </div>
 
-
-<div id="Tab1" class="tab-content" style="display: block;">
-  <div class="row row-cols-1 row-cols-md-3 g-5">
-    <div class="col">
-      <div class="card h-100">
-        <img src="https://sappira2.cafe24.com/web/product/medium/202404/b8faccce3e918d6cbe15afe87bdbc470.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">의사가운</p>
+  <div id="Tab1" class="tab-content" style="display: block;">
+    <div class="row">
+      <div class="col col-12 col-md-12 col-lg-5">
+        <div>
+          <a href="https://sappira.co.kr/product/list.html?cate_no=309"><img src="https://sappira2.cafe24.com/web/images/coolitems/%EC%9D%98%EC%82%AC%EA%B0%80%EC%9A%B4.jpg" class="banner-img"></a>
         </div>
       </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="https://sappira2.cafe24.com/web/product/medium/202404/acb51e27c66462a90c6dea9e041ddf12.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">의사가운</h5>
-          <p class="card-text">의사가운</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="https://sappira2.cafe24.com/web/product/medium/202205/3e5d1fc13a4b824b0e6615f51c5432b0.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">의사가운</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="https://sappira2.cafe24.com/web/product/medium/202310/4bfc355e69f5b3d8b235e0e5c9aeedad.jpg" class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">의사가운</p>
+      <div class="col-lg-1"></div>
+      <div class="col-lg-6">
+        <div class="row row-cols-1 row-cols-md-2 g-5">
+          <div class="col">
+            <a class="card-link" href="https://sappira.co.kr/product/detail.html?product_no=946&cate_no=70&display_group=1">
+              <div class="card">
+              <img src="https://sappira2.cafe24.com/web/images/coolitems/0020_2.jpg" class="card-img-top" alt="..."></img>
+              <div class="card-body">
+                <h5 class="card-title">N0020</h5>
+                <div class="card-text">
+                  <p>100%기능성하이엔드원단 2버튼 자켓</p>
+                  <span>세련된 라인으로 깔끔한 디자인</span>
+                </div>
+               </div>
+              </div>
+            </a>
+          </div>
+          <div class="col">
+            <a class="card-link" href="https://sappira.co.kr/product/detail.html?product_no=1794&cate_no=265&display_group=1">
+            <div class="card h-100">
+              <img src="https://sappira2.cafe24.com/web/images/coolitems/0020_2.jpg" class="card-img-top" alt="..."></img>
+              <div class="card-body">
+                <h5 class="card-title">S7060</h5>
+                  <div class="card-text">
+                  <p>100%기능성 하이엔드 원단 가운</p>
+                  <span>우수한 활동성을 위한 포켓</span>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col" style="margin: 0px;">
+            <a class="card-link" href="https://sappira.co.kr/product/detail.html?product_no=2809&cate_no=176&display_group=1">
+            <div class="card h-100">
+              <img src="https://sappira2.cafe24.com/web/images/coolitems/0020_2.jpg" class="card-img-top" alt="..."></img>
+              <div class="card-body">
+                <h5 class="card-title">D0350</h5>
+                <div class="card-text">
+                  <p>100%기능성 하이엔드 원단 가운</p>
+                  <span>7부 기장 + 아웃 포켓</span>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col" style="margin: 0px;">
+            <a class="card-link" href="https://sappira.co.kr/product/detail.html?product_no=4625&cate_no=50&display_group=1">
+            <div class="card h-100">
+              <img src="https://sappira2.cafe24.com/web/images/coolitems/0020_2.jpg" class="card-img-top" alt="..."></img>
+              <div class="card-body">
+                <h5 class="card-title">D0796</h5>
+                <div class="card-text">
+                  <p>여름용 면 원단 하프가운</p>
+                  <span>가볍고 부드러운 소재로 쾌적한 유니폼</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          </a>
         </div>
       </div>
     </div>
   </div>
-</div>
-
-<div id="Tab2" class="tab-content">
-  <div class="row row-cols-1 row-cols-md-3 g-5">
-    <div class="col">
-      <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      
+  <div id="Tab2" class="tab-content">
+    <div class="row">
+      <div class="col col-12 col-md-12 col-lg-5">
+        <div>
+          <a href="https://sappira.co.kr/product/list.html?cate_no=310"><img src="/web/images/coolitems/coolitems__1.jpg" class="banner-img"></a>
         </div>
       </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a short card.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</div>
-
-<div id="Tab3" class="tab-content">
-  <div class="row row-cols-1 row-cols-md-3 g-5">
-    <div class="col">
-      <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a short card.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <div class="col-lg-1"></div>
+      <div class="col-lg-6">
+        <div class="row row-cols-1 row-cols-md-2 g-3">
+          <div class="col">
+            <a class="card-link" href="https://sappira.co.kr/product/detail.html?product_no=1783&cate_no=302&display_group=1">
+            <div class="card h-100">
+              <img src="/web/images/coolitems/3046.jpg" class="card-img-top" alt="..."></img>
+              <div class="card-body">
+                <h5 class="card-title">S3046</h5>
+                <div class="card-text">
+                  <p>100%기능성 하이엔드 원단 상의</p>
+                  <span>튤립소매로 여성스러운 유니폼</span>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col">
+            <a class="card-link" href="https://sappira.co.kr/product/detail.html?product_no=1074&cate_no=302&display_group=1">
+            <div class="card h-100">
+              <img src="/web/images/coolitems/0083.jpg" class="card-img-top" alt="..."></img>
+              <div class="card-body">
+                <h5 class="card-title">N0083</h5>
+                <div class="card-text">
+                  <p>100%기능성 하이엔드 원단 상의</p>
+                  <span>체형에 맞게 핏 조절이 가능한!</span>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col" style="margin: 0px;">
+            <a class="card-link" href="https://sappira.co.kr/product/detail.html?product_no=2942&cate_no=101&display_group=1">
+            <div class="card h-100">
+              <img src="/web/images/coolitems/0417.jpg" class="card-img-top" alt="..."></img>
+              <div class="card-body">
+                <h5 class="card-title">S0417</h5>
+                <div class="card-text">
+                  <p>스마트케어 기능성 원단 상의</p>
+                  <span>옆지퍼로 착/탈의가 편리한 유니폼</span>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col" style="margin: 0px;">
+              <a class="card-link" href="https://sappira.co.kr/product/detail.html?product_no=3438&cate_no=140&display_group=1">
+            <div class="card h-100">
+              <img src="/web/images/coolitems/0511.jpg" class="card-img-top" alt="..."></img>
+              <div class="card-body">
+                <h5 class="card-title">P0511</h5>
+                <div class="card-text">
+                  <p>마 스판덱스 원단 상의</p>
+                  <span>뛰어난 신축성, 베이직한 디자인</span>
+                </div>
+              </div>
+            </div>
+          </div>
+          </a>
         </div>
       </div>
     </div>
   </div>
-</div>
-
-<div id="Tab4" class="tab-content">
-  <div class="row row-cols-1 row-cols-md-3 g-5">
-    <div class="col">
-      <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+        
+  <div id="Tab3" class="tab-content">
+    <div class="row">
+      <div class="col col-12 col-md-12 col-lg-5">
+        <div>
+          <a href="https://sappira.co.kr/product/list.html?cate_no=312"><img src="/web/images/coolitems/coolitems_4.gif" class="banner-img"></a>
         </div>
       </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a short card.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
-        </div>
-      </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <div class="col-lg-1"></div>
+      <div class="col-lg-6">
+        <div class="row row-cols-1 row-cols-md-2 g-3">
+          <div class="col">
+            <a class="card-link" href="https://sappira.co.kr/product/detail.html?product_no=5315&cate_no=175&display_group=1">
+              <div class="card h-100">
+                <img src="/web/images/coolitems/0875.jpg" class="card-img-top" alt="..."></img>
+                <div class="card-body">
+                  <h5 class="card-title">S0875</h5>
+                  <div class="card-text">
+                    <p>이중직 면 100% 뷰티가운 검진복</p>
+                    <span>바람이 잘 통하여 쾌적한 착용!</span>
+                  </div>
+                </div>
+              </div>
+            </a>
+          </div>
+          <div class="col">
+            <a class="card-link" href="https://sappira.co.kr/product/detail.html?product_no=2161&cate_no=267&display_group=1">
+            <div class="card h-100">
+              <img src="/web/images/coolitems/0113.jpg" class="card-img-top" alt="..."></img>
+              <div class="card-body">
+                <h5 class="card-title">B0113</h5>
+                <div class="card-text">
+                  <p>에어로실버 원단 레글런소매 원피스</p>
+                  <span>강력한 항균기능 + 신축성</span>
+                </div>
+              </div>
+            </div>
+           </a>
+          </div>
+          <div class="col" style="margin: 0px;">
+            <a class="card-link" href="https://sappira.co.kr/product/detail.html?product_no=3753&cate_no=77&display_group=1">
+            <div class="card h-100">
+              <img src="/web/images/coolitems/0615.jpg" class="card-img-top" alt="..."></img>
+              <div class="card-body">
+                <h5 class="card-title">S0615</h5>
+                  <div class="card-text">
+                  <p>니트 원단 검진복 뷰티가운</p>
+                  <span>우수한 신축성으로 편안하며, 부드러운</span>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col" style="margin: 0px;">
+            <a class="card-link" href="https://sappira.co.kr/product/detail.html?product_no=5316&cate_no=100&display_group=1">
+            <div class="card h-100">
+              <img src="/web/images/coolitems/0877.jpg" class="card-img-top" alt="..."></img>
+              <div class="card-body">
+                <h5 class="card-title">S0877</h5>
+                  <div class="card-text">
+                  <p>[한정판매]폴리 밸크로 고객가운</p>
+                  <span>하늘하늘, 통기성이 좋은 가운</span>
+                 </div>
+              </div>
+            </div>
+            </a>
+          </div>
         </div>
       </div>
     </div>
   </div>
-</div>
 
-<div id="Tab5" class="tab-content">
-  <div class="row row-cols-1 row-cols-md-3 g-5">
-    <div class="col">
-      <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+  <div id="Tab4" class="tab-content">
+    <div class="row">
+      <div class="col col-12 col-md-12 col-lg-5">
+        <div>
+          <a href="https://sappira.co.kr/product/list.html?cate_no=311"><img src="/web/images/coolitems/coolitems__2.jpg" class="banner-img"></a>
         </div>
       </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a short card.</p>
-        </div>
+      <div class="col-lg-1"></div>
+      <div class="col-lg-6">
+        <div class="row row-cols-1 row-cols-md-2 g-3">
+          <div class="col">
+            <a class="card-link" href="https://sappira.co.kr/product/detail.html?product_no=2458&cate_no=265&display_group=1">
+            <div class="card h-100">
+              <img src="/web/images/coolitems/0191.jpg" class="card-img-top" alt="..."></img>
+              <div class="card-body">
+                <h5 class="card-title">P0191</h5>
+                <div class="card-text">
+                  <p>100%기능성 하이엔드 원단 상의</p>
+                  <span>포켓에 포인트라인을 넣어 스타일리쉬한</span>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col">
+            <a class="card-link" href="https://sappira.co.kr/product/detail.html?product_no=2879&cate_no=138&display_group=1">
+            <div class="card h-100">
+              <img src="/web/images/coolitems/0383.jpg" class="card-img-top" alt="..."></img>
+              <div class="card-body">
+                <h5 class="card-title">P0383</h5>
+                  <div class="card-text">
+                  <p>100%기능성 하이엔드 원단 남성 상의</p>
+                  <span>브이넥라인으로 깔끔하고 심플한</span>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col" style="margin: 0px;">
+            <a class="card-link" href="https://sappira.co.kr/product/detail.html?product_no=3471&cate_no=140&display_group=1">
+            <div class="card h-100">
+              <img src="/web/images/coolitems/0522.jpg" class="card-img-top" alt="..."></img>
+              <div class="card-body">
+                <h5 class="card-title">P0522</h5>
+                  <div class="card-text">
+                  <p>100%기능성 하이엔드 원단 상의</p>
+                  <span>편안하고 착용 시에도 부담이없는 유니폼</span>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col" style="margin: 0px;">
+            <a class="card-link" href="https://sappira.co.kr/product/detail.html?product_no=4529&cate_no=175&display_group=1">
+            <div class="card h-100">
+              <img src="/web/images/coolitems/0771.jpg" class="card-img-top" alt="..."></img>
+              <div class="card-body">
+                <h5 class="card-title">P0771</h5>
+                <div class="card-text">
+                  <p>100%기능성 하이엔드 원단 상의</p>
+                  <span>메쉬에어홀 프리미엄 수술복</span>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+         </div>
       </div>
     </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content.</p>
+  </div>
+
+  <div id="Tab5" class="tab-content">
+    <div class="row">
+      <div class="col col-12 col-md-12 col-lg-5">
+        <div>
+          <a href="https://sappira.co.kr/product/list.html?cate_no=313"><img src="/web/images/coolitems/coolitems_5.gif" class="banner-img"></a>
         </div>
       </div>
-    </div>
-    <div class="col">
-      <div class="card h-100">
-        <img src="..." class="card-img-top" alt="...">
-        <div class="card-body">
-          <h5 class="card-title">Card title</h5>
-          <p class="card-text">This is a longer card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
+      <div class="col-lg-1"></div>
+      <div class="col-lg-6">
+        <div class="row row-cols-1 row-cols-md-2 g-3">
+          <div class="col">
+            <a class="card-link" href="https://sappira.co.kr/product/detail.html?product_no=4741&cate_no=47&display_group=1">
+            <div class="card h-100">
+              <img src="/web/images/coolitems/0802.jpg" class="card-img-top" alt="..."></img>
+              <div class="card-body">
+                <h5 class="card-title">S0802</h5>
+                <div class="card-text">
+                  <p>기능성 에어쿨원단 검진복 상의 남여공용</p>
+                  <span>몸에 달라붙지 않아 쾌적한</span>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col">
+              <a class="card-link" href="https://sappira.co.kr/product/detail.html?product_no=3881&cate_no=77&display_group=1">
+            <div class="card h-100">
+              <img src="/web/images/coolitems/0653.jpg" class="card-img-top" alt="..."></img>
+              <div class="card-body">
+                <h5 class="card-title">S0653</h5>
+                  <div class="card-text">
+                  <p>스판원단 검진복 남/여공용 상의</p>
+                  <span>편안하지만 스타일이 살아있는</span>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col" style="margin: 0px;">
+              <a class="card-link" href="https://sappira.co.kr/product/detail.html?product_no=3541&cate_no=77&display_group=1">
+            <div class="card h-100">
+              <img src="/web/images/coolitems/0563.jpg" class="card-img-top" alt="..."></img>
+              <div class="card-body">
+                <h5 class="card-title">S0563</h5>
+                <div class="card-text">
+                  <p>여름용 마원단(CPR) 검진복 뷰티가운</p>
+                  <span>마 함유량이 높아 시원한</span>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
+          <div class="col" style="margin: 0px;">
+            <a class="card-link" href="https://sappira.co.kr/product/detail.html?product_no=5559&cate_no=100&display_group=1">
+            <div class="card h-100">
+              <img src="/web/images/coolitems/0901.jpg" class="card-img-top" alt="..."></img>
+              <div class="card-body">
+                <h5 class="card-title">B0901</h5>
+                <div class="card-text">
+                  <p>샤뮤즈 원단 뷰티가운 [2컬러]</p>
+                  <span>부드러운 촉감+은은한 광택!</span>
+                </div>
+              </div>
+            </div>
+            </a>
+          </div>
         </div>
       </div>
     </div>
