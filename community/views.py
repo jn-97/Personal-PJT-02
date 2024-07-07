@@ -29,6 +29,9 @@ def community(request):
 def coolitems(request):
   return render(request, 'community/coolitems.html')
 
+def fabric_info(request):
+  return render(request, 'community/fabric_info.html')
+
 @login_required
 def community_create(request):
 

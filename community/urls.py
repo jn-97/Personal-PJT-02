@@ -6,6 +6,7 @@ app_name = 'community'
 urlpatterns = [
     path('', views.community, name="community"),
     path('coolitems/', views.coolitems, name="coolitems"),
+    path('fabric_info/', views.fabric_info, name="fabric_info"),
     path('community_create/', views.community_create, name="community_create"),
     path('<int:category_id>/', views.category, name="category"),
     path('<int:category_id>/<int:pk>/', views.detail, name="detail"),

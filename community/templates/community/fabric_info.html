@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="utf-8" />
+  <title>Swiper demo</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, minimum-scale=1, maximum-scale=1" />
+  <!-- Link Swiper's CSS -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css" />
+
+  <!-- Demo styles -->
+  <style>
+    html,
+    body {
+      position: relative;
+      height: 100%;
+    }
+
+    body {
+      background: #eee;
+      font-family: Helvetica Neue, Helvetica, Arial, sans-serif;
+      font-size: 14px;
+      color: #000;
+      margin: 0;
+      padding: 0;
+    }
+
+    .swiper {
+      width: 100%;
+      height: 500px;
+    }
+    
+    .swiper-slide { 
+      font-size: 18px;
+      background: #fff;
+      display: flex;
+      max-width: 400px;
+      min-width: 400px;
+      border-radius: 18px;
+      box-shadow: 2px 0px 12px #00000014;
+      overflow: hidden;
+      max-height: 500px;
+    }
+
+    .swiper-slide img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    .swiper {
+      width: 100%;
+      margin: 20px auto;
+    }
+
+    .text {
+      padding: 20px;
+    }
+
+    .img-1 
+    {
+      height: 100vh;
+      background-size: cover;
+      background-image : url("https://sappira2.cafe24.com/web/product/tiny/202402/3751ac172fb7bc5bc60cd764e164388f.jpg");
+    }
+
+    .img-2 
+    {
+      height: 100vh;
+      background-size: cover;
+      background-image : url("https://sappira2.cafe24.com/web/product/tiny/202307/6b8d10d815d9577d56bb026984a5bc8d.jpg");
+    }
+  </style>
+</head>
+
+<body>
+  <!-- Swiper -->
+  <div #swiperRef="" class="swiper mySwiper">
+    <div class="swiper-wrapper" style="padding-left: 200px;">
+      <div class="swiper-slide img-1">
+        <div class="text">
+          <span>천연섬유의 감촉</span>
+          <p>H I G H E N D</p>
+          <h1>기능성하이엔드</h1>
+        </div>
+      </div>
+      <div class="swiper-slide img-2">
+        <div>
+          <span>천연섬유의 감촉</span>
+        </div>
+      </div>
+      <div class="swiper-slide">Slide 3</div>
+      <div class="swiper-slide">Slide 4</div>
+      <div class="swiper-slide">Slide 5</div>
+      <div class="swiper-slide">Slide 6</div>
+      <div class="swiper-slide">Slide 7</div>
+      <div class="swiper-slide">Slide 8</div>
+    </div>
+    <div class="swiper-button-next"></div>
+    <div class="swiper-button-prev"></div>
+    <div class="swiper-pagination"></div>
+  </div>
+
+  <!-- Swiper JS -->
+  <script src="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.js"></script>
+
+  <!-- Initialize Swiper -->
+  <script>
+    var swiper = new Swiper(".mySwiper", {
+      slidesPerView: 3,
+      centeredSlides: false,
+      spaceBetween: 30,
+      navigation: {
+        nextEl: ".swiper-button-next",
+        prevEl: ".swiper-button-prev",
+      },
+    });
+  </script>
+</body>
+
+</html>
