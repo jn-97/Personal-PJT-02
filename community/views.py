@@ -32,6 +32,9 @@ def coolitems(request):
 def fabric_info(request):
   return render(request, 'community/fabric_info.html')
 
+def bestItem(request):
+  return render(request, 'community/bestItem.html')
+
 @login_required
 def community_create(request):
 
